@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Responsywna Strona</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Responsywna Strona</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">O mnie</a></li>
+                <li><a href="#services">Usługi</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>O mnie</h2>
+            <p>Jestem profesjonalistą, który tworzy nowoczesne i responsywne strony internetowe.</p>
+        </section>
+
+        <section id="services">
+            <h2>Usługi</h2>
+            <div class="service-grid">
+                <div class="service">
+                    <h3>Projektowanie</h3>
+                    <p>Tworzę estetyczne i funkcjonalne projekty stron.</p>
+                </div>
+                <div class="service">
+                    <h3>Programowanie</h3>
+                    <p>Implementuję najnowsze technologie webowe.</p>
+                </div>
+                <div class="service">
+                    <h3>SEO</h3>
+                    <p>Optymalizuję strony dla wyszukiwarek.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Kontakt</h2>
+            <form action="#" method="post">
+                <label for="name">Imię:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Wiadomość:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                
+                <button type="submit">Wyślij</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Responsywna Strona. Wszystkie prawa zastrzeżone.</p>
+    </footer>
+</body>
+</html>
