@@ -3,65 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Responsywna Strona</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Animowany Napis</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: radial-gradient(circle, #0d0d24, #01010a);
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: moveStar 5s linear infinite;
+        }
+
+        @keyframes moveStar {
+            0% {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+        }
+
+        .title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffccff;
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff66cc, 0 0 30px #ff33cc;
+            animation: glow 2s infinite alternate, snake 5s linear infinite;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff66cc, 0 0 30px #ff33cc;
+            }
+            100% {
+                text-shadow: 0 0 20px #ff99cc, 0 0 40px #ff66cc, 0 0 60px #ff33cc;
+            }
+        }
+
+        @keyframes snake {
+            0% {
+                transform: translate(-50%, -50%) translateX(0) translateY(0);
+            }
+            25% {
+                transform: translate(-50%, -50%) translateX(50px) translateY(-30px);
+            }
+            50% {
+                transform: translate(-50%, -50%) translateX(0) translateY(-60px);
+            }
+            75% {
+                transform: translate(-50%, -50%) translateX(-50px) translateY(-30px);
+            }
+            100% {
+                transform: translate(-50%, -50%) translateX(0) translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Responsywna Strona</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">O mnie</a></li>
-                <li><a href="#services">Usługi</a></li>
-                <li><a href="#contact">Kontakt</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="stars"></div>
+    <div class="title">Lasuczita dziewczyna</div>
 
-    <main>
-        <section id="about">
-            <h2>O mnie</h2>
-            <p>Jestem profesjonalistą, który tworzy nowoczesne i responsywne strony internetowe.</p>
-        </section>
+    <script>
+        const starsContainer = document.querySelector('.stars');
+        const starCount = 200;
 
-        <section id="services">
-            <h2>Usługi</h2>
-            <div class="service-grid">
-                <div class="service">
-                    <h3>Projektowanie</h3>
-                    <p>Tworzę estetyczne i funkcjonalne projekty stron.</p>
-                </div>
-                <div class="service">
-                    <h3>Programowanie</h3>
-                    <p>Implementuję najnowsze technologie webowe.</p>
-                </div>
-                <div class="service">
-                    <h3>SEO</h3>
-                    <p>Optymalizuję strony dla wyszukiwarek.</p>
-                </div>
-            </div>
-        </section>
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
 
-        <section id="contact">
-            <h2>Kontakt</h2>
-            <form action="#" method="post">
-                <label for="name">Imię:</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="message">Wiadomość:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-                
-                <button type="submit">Wyślij</button>
-            </form>
-        </section>
-    </main>
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            const duration = Math.random() * 3 + 2;
 
-    <footer>
-        <p>&copy; 2025 Responsywna Strona. Wszystkie prawa zastrzeżone.</p>
-    </footer>
+            star.style.left = `${x}px`;
+            star.style.top = `${y}px`;
+            star.style.animationDuration = `${duration}s`;
+
+            starsContainer.appendChild(star);
+        }
+    </script>
 </body>
 </html>
